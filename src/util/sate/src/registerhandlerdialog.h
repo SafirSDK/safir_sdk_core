@@ -25,6 +25,7 @@
 
 #include <QDialog>
 #include <Safir/Dob/InstanceIdPolicy.h>
+#include <Safir/Dob/Typesystem/HandlerId.h>
 
 namespace Ui {
 class RegisterHandlerDialog;
@@ -42,7 +43,7 @@ public:
     void Show(int64_t typeId, bool allFieldsVisible = true);
 
     int64_t TypeId() const;
-    QString Handler() const;
+    Safir::Dob::Typesystem::HandlerId Handler() const;
     bool Pending() const;
     bool InjectionHandler() const;
     Safir::Dob::InstanceIdPolicy::Enumeration InstancePolicy() const;

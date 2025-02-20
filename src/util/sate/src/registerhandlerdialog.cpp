@@ -26,6 +26,7 @@
 
 #include <Safir/Dob/Typesystem/Operations.h>
 
+
 RegisterHandlerDialog::RegisterHandlerDialog(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::RegisterHandlerDialog)
@@ -62,10 +63,17 @@ int64_t RegisterHandlerDialog::TypeId() const
     return m_typeId;
 }
 
-QString RegisterHandlerDialog::Handler() const
+Safir::Dob::Typesystem::HandlerId RegisterHandlerDialog::Handler() const
 {
     auto h = ui->handlerIdEdit->text();
-    return h.isEmpty() ? "DEFAULT_HANDLER" : h;
+    if (h.isEmpty())
+    {
+        return Safir::Dob::Typesystem::HandlerId();
+    }
+
+    bool ok;
+    int64_t num = h.toLongLong(&ok, 10);
+    return ok ? Safir::Dob::Typesystem::HandlerId(num) : Safir::Dob::Typesystem::HandlerId(h.toStdWString());
 }
 
 bool RegisterHandlerDialog::Pending() const

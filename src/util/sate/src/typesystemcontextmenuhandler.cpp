@@ -73,11 +73,11 @@ TypesystemContextMenuHandler::TypesystemContextMenuHandler(DobHandler* dob, QTre
         auto typeId = m_registerDlg->TypeId();
         if (TypesystemRepository::Instance().GetClass(typeId)->dobBaseClass == TypesystemRepository::Entity)
         {
-            m_dob->RegisterEntityHandler(typeId, m_registerDlg->Handler().toStdWString(), m_registerDlg->InstancePolicy(), m_registerDlg->Pending(), m_registerDlg->InjectionHandler());
+            m_dob->RegisterEntityHandler(typeId, m_registerDlg->Handler(), m_registerDlg->InstancePolicy(), m_registerDlg->Pending(), m_registerDlg->InjectionHandler());
         }
         else
         {
-            m_dob->RegisterServiceHandler(typeId, m_registerDlg->Handler().toStdWString(), m_registerDlg->Pending());
+            m_dob->RegisterServiceHandler(typeId, m_registerDlg->Handler(), m_registerDlg->Pending());
         }
     } );
 
